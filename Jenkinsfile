@@ -25,7 +25,7 @@ println(VERSION)
 println("------------------------------------------------------------------------------------------------------------")
 
 def mvnHome
-mvnHome = tool 'maven3'
+mvnHome = tool 'M3'
 
 
 node {
