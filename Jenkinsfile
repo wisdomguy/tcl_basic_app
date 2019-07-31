@@ -24,15 +24,24 @@ println(tempVer)
 println(VERSION)
 println("------------------------------------------------------------------------------------------------------------")
 
+def mvnHome
+mvnHome = tool 'maven3'
+
+
 node {
-stage('Preparation') { // for display purposes
-	echo "Current workspace : ${workspace}"
-}
+	stage('Preparation') { // for display purposes
+		echo "Current workspace : ${workspace}"
+		echo "Current mvnHome : ${mvnHome}"
+	}
+
+	stage('Checkout') {
+		// Get some code from a Git repository
+		checkout scm
+	}
 	
-stage('Checkout') {
-        // Get some code from a Git repository
-        checkout scm
-}
+	stage('Build') {
+		sh "'${mvnHome}/bin/mvn' -P ${activeProfile} -Dmaven.test.skip=true clean install"
+	}
 }
 	
 println("------------------------------------------------------------------------------------------------------------")
