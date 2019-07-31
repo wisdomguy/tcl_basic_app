@@ -24,6 +24,19 @@ println(tempVer)
 println(VERSION)
 println("------------------------------------------------------------------------------------------------------------")
 
+node {
+stage('Preparation') { // for display purposes
+	echo "Current workspace : ${workspace}"
+}
+	
+stage('Checkout') {
+        // Get some code from a Git repository
+        checkout scm
+}
+	
+println("------------------------------------------------------------------------------------------------------------")
+println("------------------------------------------------------------------------------------------------------------")
+
 def b1 = new StringBuffer()
 def b2 = new StringBuffer()
 def b3 = new StringBuffer()
@@ -43,6 +56,8 @@ println b2.toString()
 
 "sleep 5".execute()
 */
+	
+/*	
 def proc3 = "sudo docker tag tomcat:8 registry.koreacentral.cloudapp.azure.com/tomcat:8-fromjenkins".execute()
 proc3.consumeProcessErrorStream(b3)
 println proc3.text
@@ -55,7 +70,7 @@ proc4.consumeProcessErrorStream(b4)
 
 println proc4.text
 println b4.toString()
-
+*/
 
 //docker build .
 /*
