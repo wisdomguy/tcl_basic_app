@@ -48,6 +48,16 @@ node {
 //		}
 //	}
 	
+	stage('Docker Build') {
+		sh "sudo docker build -t registry.koreacentral.cloudapp.azure.com/tcl_basic_app ."
+		/*
+		def proc1 = "sudo docker build .".execute()
+		proc1.consumeProcessErrorStream(b1)
+		println proc1.text
+		println b1.toString()
+		*/
+	}
+	
 }
 	
 println("------------------------------------------------------------------------------------------------------------")
