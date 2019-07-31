@@ -24,9 +24,7 @@ println(tempVer)
 println(VERSION)
 println("------------------------------------------------------------------------------------------------------------")
 
-def mvnHome
-mvnHome = tool 'M3'
-
+def mvnHome = '/tools/maven'
 
 node {
 	stage('Preparation') { // for display purposes
