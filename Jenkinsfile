@@ -37,9 +37,15 @@ node {
 		checkout scm
 	}
 	
-	stage('Build') {
-		sh "'${mvnHome}/bin/mvn' -P ${activeProfile} -Dmaven.test.skip=true clean install"
+//	stage('Build') {
+//		sh "'${mvnHome}/bin/mvn' -P ${activeProfile} -Dmaven.test.skip=true clean install"
+//	}
+	stage('Build'){
+		withMaven(maven: 'maven3',mavenSettingsConfig: 'my-maven-settings') {
+			sh "mvn clean verify"
+		}
 	}
+	
 }
 	
 println("------------------------------------------------------------------------------------------------------------")
